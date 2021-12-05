@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// function runAsync1(){
+			//     var p = new Promise(function(resolve, reject){
+			//         //做一些异步操作
+			//         setTimeout(function(){
+			//             console.log('异步任务1执行完成');
+			//             resolve('随便什么数据1');
+			//         }, 1000);
+			//     });
+			//     return p;            
+			// }
+			// function runAsync2(){
+			//     var p = new Promise(function(resolve, reject){
+			//         //做一些异步操作
+			//         setTimeout(function(){
+			//             console.log('异步任务2执行完成');
+			//             resolve('随便什么数据2');
+			//         }, 2000);
+			//     });
+			//     return p;            
+			// }
+			// function runAsync3(){
+			//     var p = new Promise(function(resolve, reject){
+			//         //做一些异步操作
+			//         setTimeout(function(){
+			//             console.log('异步任务3执行完成');
+			//             resolve('随便什么数据3');
+			//         }, 2000);
+			//     });
+			//     return p;            
+			// }
+			// runAsync1()
+			// .then(function(data){
+			//     console.log(data);
+			//     return runAsync2();
+			// })
+			// .then(function(data){
+			//     console.log(data);
+			//     return "sadsadasd";
+			// })
+			// .then(function(data){
+			//     console.log(data);
+			// });
+			
+			var fun = new Promise(function(resolve,reject){
+				var number = 10
+				if(number <10){
+					resolve("number < 10")
+				}
+				else{
+					reject("error") 
+				}
+			})
+			fun.then(function(data){
+				console.log(data)
+			})
+
+
+		</script>
+	</body>
+</html>

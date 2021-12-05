@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		var fun = new Promise(function(resolve,reject,data){
+			var number = Math.random()*10
+			console.log(number)
+			if(number <5){
+				resolve("number < 10")
+			}
+			else{
+				reject("errorrrrr") 
+			}
+		})
+		
+		var fun1 = new Promise(function(resolve,reject){
+			var number = Math.random()*10
+			resolve(number)
+		})
+		
+		//then指定两个参数，通常定义为两个函数，第一个函数为promise状态变为resolve
+		//时候执行的，第二个函数为promise状态变为reject状态时候执行的
+		//then(function(),function())
+		fun.then(function(data){
+			console.log(data)
+			
+		},function(errordata){
+			console.log(errordata)
+		})
+		// .then(function(data){
+		// 	console.log(data)
+		// })
+		</script>
+	</body>
+</html>
