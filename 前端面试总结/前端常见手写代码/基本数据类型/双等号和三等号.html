@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		
+		var a = 10
+		var b = "10"
+		console.log(a==b)  //输出为true
+		//双等号会先将两边的类型转换为同一个类型，再进行判断
+		console.log(a===b) //输出为false
+		//三等号不会进行转换，如果两边类型不一样直接返回false，如果两边类型一样
+		//再继续判断值是否相同
+		
+		var c = undefined
+		var d = null
+		console.log(c == d)//输出为true
+		//ES5中规定 如果x为undefined y为null 则x==y 输出为true，同样涉及到
+		//隐藏式强制类型转换
+		//在
+		</script>
+	</body>
+</html>

@@ -1,0 +1,64 @@
+// class Solution {    //笨办法，先折半后遍历，
+// //关键在于折半的时候，找到target第一次出现的位置，然后向后遍历即可
+// //
+//     public int search(int[] nums, int target) {
+//         int l =  binary(nums,target);
+//         if(l == -1){
+//             return 0;
+//         }
+//         int count = 0;
+//         int location = l;
+//         while(location>0){
+//             if(nums[location] == target){
+//                 location--;
+//             }
+//             else{
+//                 break;
+//             }
+//         }
+//        for(int i =location;i<=nums.length-1;i++){
+//            if(nums[i] == target){
+//                count++;
+//            }
+//        }
+//         return count;
+//     }
+
+//     public int binary(int[] nums,int target){
+//         int len = nums.length;
+//         int left = 0;
+//         int right = len-1;
+//         int mid = 0;
+//         while(left<=right){
+//             mid = (left+right)/2;
+//             if(nums[mid] == target){
+//                 return mid;
+//             }
+//             if(nums[mid]<target){
+//                 left = mid +1;
+//             }
+//             else{
+//                 right = mid -1;
+//             }
+            
+//         }
+//         return -1;
+//     }
+// }
+
+class Solution {
+    public int search(int[] nums, int target) {
+        int left =0,right = nums.length-1;
+        int count = 0;
+        while(left<right){
+            int mid = (left+right)/2;
+            if(nums[mid]>=target)
+                right=mid;
+            if(nums[mid]<target)
+                left = mid+1;
+        }
+        while(left<nums.length&&nums[left++]==target)
+            count++;
+        return count;
+    }
+}

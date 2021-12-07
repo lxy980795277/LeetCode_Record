@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+ 
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>一书一课App</title>
+	<meta name="description" content="一书一课">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Your title">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+	<style>
+		.scale-border{
+			height:200px;
+			position:relative;
+			width: 400px;
+		}
+		.border{
+			/* -webkit-transform:scale(0.5); */
+			
+			position:absolute;
+			border:1px solid #333333;
+			top:-50%;
+			right:-50%;
+			bottom:-50%;
+			left:-50%;
+			border-radius: 10px;
+			background-color:#4eee46;
+		}
+		.content{
+			position:relative;
+			z-index:2;
+		}
+	</style>
+ 
+</head>
+ 
+<body>
+<div class="scale-border ">
+	<div class="content">边框宽度0.5px</div>
+	<div class="border"></div>
+</div>
+</body>
+ 
+</html>
