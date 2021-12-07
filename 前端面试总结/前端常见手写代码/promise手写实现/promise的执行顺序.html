@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		//在执行一个 Promise 对象的时候，当走完resolve();之后
+		//，就会立刻把 .then()里面的代码加入到微任务队列当中。
+		// 1 在执行宏任务的过程中，创建了一个微任务。
+		//但是需要先把当前这个宏任务执行完，再去创建并执行微任务。
+			new Promise((resolve, reject) => {
+				setTimeout(() => {
+					resolve();
+					console.log('setTimeout'); // 宏任务
+				}, 0);
+				console.log('promise1');
+			}).then((res) => {
+				// 微任务
+				console.log('promise then');
+			});
+
+			console.log('qianguyihao');
+		</script>
+	</body>
+</html>

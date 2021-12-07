@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//async返回的是一个promise对象
+			// async function test(){
+			// 	return "bbb"
+			// }
+			// var a = test().then((data)=>{
+			// 	console.log(data)
+			// })
+			// console.log(a)  //输出：promise{"bbb"}
+
+
+			//2 现在举例，用 setTimeout 模拟耗时的异步操作，
+			//先来看看不用 async/await 会怎么写
+			// function takeLongTime() {
+			//     return new Promise(resolve => {
+			//         setTimeout(() => resolve("long_time_value"), 1000);
+			//     });
+			// }
+
+			// takeLongTime().then(v => {
+			//     console.log(v);   //1000ms后输出 long_time_value
+			// });
+
+			// //如果改用 async/await 呢，会是这样
+			// function takeLongTime1() {
+			//     return new Promise(resolve => {
+			//         setTimeout(() => resolve("long_time_value"), 1000);
+			//     });
+			// }
+
+			// async function test1() {
+			//     const v = await takeLongTime1();
+			//     console.log(v);
+			// }
+			// test1();
+			/*单一的 Promise 链并不能发现 async/await 的优势
+			，但是，如果需要处理由多个 Promise 组成的 then 链的时候，
+			优势就能体现出来了（很有意思，
+			Promise 通过 then 链来解决多层回调的问题，
+			现在又用 async/await 来进一步优化它*/
+
+
+			/**
+			 * 传入参数 n，表示这个函数执行的时间（毫秒）
+			 * 执行的结果是 n + 200，这个值将用于下一步骤
+			 */
+			function takeLongTime(n) {
+				return new Promise(resolve => {
+					setTimeout(() => resolve(n + 200), n);
+				});
+			}
+
+			function step1(n) {
+				console.log(`step1 with ${n}`);
+				return takeLongTime(n);
+			}
+
+			function step2(n) {
+				console.log(`step2 with ${n}`);
+				return takeLongTime(n);
+			}
+
+			function step3(n) {
+				console.log(`step3 with ${n}`);
+				return takeLongTime(n);
+			}
+			
+			
+			function doIt() {
+				console.time("doIt");
+				const time1 = 300;
+				step1(time1)
+					.then(time2 => step2(time2))
+					.then(time3 => step3(time3))
+					.then(result => {
+						console.log(`result is ${result}`);
+						console.timeEnd("doIt");
+					});
+			}
+
+			doIt();
+			如果用 async/await 来实现呢，会是这样
+			async function doIt() {
+			    console.time("doIt");
+			    const time1 = 300;
+			    const time2 = await step1(time1);
+			    const time3 = await step2(time2);
+			    const result = await step3(time3);
+			    console.log(`result is ${result}`);
+			    console.timeEnd("doIt");
+			}
+
+			doIt();
+
+			// c:\var\test>node --harmony_async_await .
+			// step1 with 300
+			// step2 with 500
+			// step3 with 700
+			// result is 900
+			// doIt: 1507.251ms
+		</script>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+class Solution {
+    public int longestPalindrome(String s) {
+/*先记录每个字符出现的次数，然后依次遍历
+如果当前字符出现了偶数次，则直接加上这个次数
+如果当前字符出现了奇数次，则加上这个次数-1
+设置一个tag位用来判断，是否有字符出现了奇数次
+如果有，则结果数需要+1，因为奇数次数的字符可以放在中间。
+
+*/ 
+        int[] array = new int[60];
+        int len = s.length();
+        if(len == 0){
+            return 0;
+        }
+        for(int i =0;i<len;i++){
+            char c = s.charAt(i);
+            array[c-'A']++;
+        }
+        int num = 0;
+        int tag = 0; 
+        for(int i =0;i<60;i++){
+            if(array[i]%2 == 1){
+                num = num +array[i]-1;
+                tag = 1;
+            }
+            if(array[i]%2==0){
+                num = num + array[i];
+            }
+        }
+        return tag==1?num+1:num;
+    }
+}

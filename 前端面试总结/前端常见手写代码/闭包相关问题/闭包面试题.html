@@ -45,7 +45,17 @@
 			var func = foo()
 			console.log(func())
 
-
+		//也可以通过promise的方法实现 
+			function a (){
+				for(var i =0;i<10;i++){
+					var a = new Promise(function(resolve,reject){
+						resolve(i)
+					})
+					a.then((data)=>{
+						console.log(data)
+					})
+				}
+			}
 			a()
 		</script>
 	</body>
