@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id = 'circle' class = 'circle' >aaa</div>
+		<div contenteditable="true" >这段文字可被编辑</div>
+		<div contenteditable="false" >这段文字不刻意被编辑</div>
+		<div contenteditable="false" hidden='true'>不会显示</div>
+	</body>
+	<script>
+	
+	//div绑定点击事件
+	var a = document.getElementById("circle")
+	a.onclick = function(){
+		alert("sadsadsa")
+	}
+	//Byid可以正常获取内容
+	//byclass不可以正常获取内容
+	
+	
+	console.log(document.getElementById("circle").innerHTML) //aaa
+	console.log(document.getElementsByClassName("circle").innerHTML)//undefined
+	
+
+	</script>
+	
+	<style>
+	.circle{
+		height:200px;
+		width:200px;
+		border-radius: 50%;
+		background-color: #4EEE46;
+		cursor: pointer;
+	}
+	
+	</style>
+</html>
+
