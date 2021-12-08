@@ -1,0 +1,4 @@
+flask
+gunicorn
+gevent
+flask-cors
