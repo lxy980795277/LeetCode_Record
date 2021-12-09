@@ -30,6 +30,14 @@
 		console.log(a.__proto__) //打印原型 和上面那一行输出是一样的 
 		
 		
+		var g = ['a','b','c','d']
+		for(var i in g ){
+			console.log(i)   //0 1 2 3 
+		}
+		for(var i of g ){
+			console.log(i)  // a b c d
+		}
+		
 		</script>
 	</body>
 </html>
