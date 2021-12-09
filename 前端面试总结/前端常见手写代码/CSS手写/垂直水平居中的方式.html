@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- line-height撑开外层容器，如果line-height和外层容器一样高
+		 那么就可以实现垂直居中-->
+		<!-- <div class = 'area'>
+			<div class = 'in'>s</div>
+		</div> -->
+		<!-- z-index的详情 元素必须有position属性，z-index才可以生效 -->
+		<div class = 'a'></div>
+		<div class = 'b'></div>
+		<div class = 'a'></div>
+	</body>
+	<style>
+	
+	.area{
+		width:200px;
+		/* height:100px; 可以实现垂直居中，但是水平不能居中 */   
+		background-color: #4EEE46;
+		border-radius: 0%;
+		cursor:pointer;
+	}
+	.in{
+		width:200px;
+		line-height: 100px;
+		/* background-color: #FF0000; */
+		border:3px solid red;
+	}
+	.a{
+		height:200px;
+		width:200px;
+		background-color: #172755;
+		position: relative;  
+		/* 必须有position属性才可以 z-index越大，元素越靠上*/
+		/* z-index:1000; */
+	}
+	.b{
+		height:200px;
+		width:200px;
+		background-color: aqua;
+		position: relative; 
+		/* 如果为relative 则不脱离原来的文件流布局 原来的位置会留下空白填充 */
+		top:100px;
+	}
+	</style>
+</html>
