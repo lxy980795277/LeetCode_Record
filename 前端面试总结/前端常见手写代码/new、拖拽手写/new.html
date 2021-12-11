@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function realizeNew() {
+				//创建一个新对象
+				let obj = {};
+				//获得构造函数
+				let Con = [].shift.call(arguments);
+				//链接到原型（给obj这个新生对象的原型指向它的构造函数的原型）
+				obj.__proto__ = Con.prototype;
+				//绑定this
+				let result = Con.apply(obj, arguments);
+				//确保new出来的是一个对象
+				return typeof result === "object" ? result : obj
+			}
+
+			function Person(name, age) {
+				this.name = name;
+				this.age = age;
+				this.say = function() {
+					console.log("I am " + this.name)
+				}
+			}
+
+			//通过new创建构造实例
+			let person1 = new Person("Curry", 18);
+			console.log(person1.name); //"Curry"
+			console.log(person1.age); //18
+			person1.say(); //"I am Curry'
+
+			//通过realize()方法创造实例
+			let person2 = realizeNew(Person, "Curry", 18);
+			console.log(person2.name); //"Curry"
+			console.log(person2.age); //18
+			person2.say(); //"I am Curry'
+
+			var a = new Date() // Tue Jan 29 2019 20:31:15 GMT+0800 (中国标准时间)
+			
+			function fn() {
+				console.log(a)
+				var a 
+				console.log(a)
+				a = 'hello'
+
+			}
+			fn() // undefined
+		</script>
+	</body>
+</html>

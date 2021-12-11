@@ -1,0 +1,31 @@
+<template>
+     <div>
+    <p @click="addd(obj)">{{obj.d}}</p>
+    <p @click="adde(obj)"> {{obj.e}}</p>
+</div>
+</template>
+
+ <script>
+  export default {
+      data(){
+            return {
+                obj:{}
+            }
+      },
+      mounted() {
+        this.obj = {d: 0};
+        this.obj.e = 0;
+        console.log('after--', this.obj);
+      },
+     methods: {
+        addd(item) {
+            item.d = item.d + 1;
+            console.log('item--',item);
+        },
+        adde(item) {
+            item.e = item.e + 1;
+            console.log('item--',item);
+        }
+       }
+  }
+ </scirpt>  

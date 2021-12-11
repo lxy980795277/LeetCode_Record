@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<script src="./vue.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{message}}</p>
+    <keep-alive>
+        <my-components msg="hello" v-if="show"></my-components>
+    </keep-alive>
+</div>
+</body>
+<script>
+    var child = {
+        template: '<div>from child: {{msg}}</div>',
+        props: ['msg'],
+        data: function () {
+            return {
+                childMsg: 'child'
+            };
+        },
+            deactivated: function () {
+            console.log('component deactivated!');
+        },
+        activated: function () {
+            console.log('component activated');
+        }
+    };
+    var app = new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                message: 'father',
+                show: true
+            };
+        },
+        beforeCreate: function () {
+            console.group('beforeCreate 创建前状态===============》');
+            var state = {
+                'el': this.$el,
+                'data': this.$data,
+                'message': this.message,
+                'show': this.show,
+            }
+            console.log(this.$el);
+            console.log(state);
+            this.methodsFun();
+        },
+        created: function () {
+            console.group('created 创建完毕状态===============》');
+            var state = {
+                'el': this.$el,
+                'data': this.$data,
+                'message': this.message,
+                'show': this.show,
+            }
+            console.log(this.$el);
+            console.log(state);
+            this.methodsFun();
+        },
+        beforeMount: function () {
+            console.group('beforeMount 挂载前状态===============》');
+            var state = {
+                'el': this.$el,
+                'data': this.$data,
+                'message': this.message,
+                'show': this.show,
+            }
+            console.log(this.$el);
+            console.log(state);
+            this.methodsFun();
+        },
+        mounted: function () {
+            console.group('mounted 挂载结束状态===============》');
+            var state = {
+                'el': this.$el,
+                'data': this.$data,
+                'message': this.message
+            }
+            console.log(this.$el);
+            console.log(state);
+            // this.message = 'change';
+            this.methodsFun();
+        },
+        beforeUpdate: function () {
+            console.group('beforeUpdate 更新前状态===============》');
+            var state = {
+                'el': this.$el,
+                'data': this.$data,
+                'message': this.message
+            }
+            console.log(this.$el);
+            console.log(state);
+            // this.message = 'change2';
+        },
+        updated: function () {
+            console.group('updated 更新完成状态===============》');
+            var state = {
+                'el': this.$el,
+                'data': this.$data,
+                'message': this.message
+            }
+            console.log(this.$el);
+            console.log(state);
+        },
+        beforeDestroy: function () {
+            console.group('beforeDestroy 销毁前状态===============》');
+            var state = {
+                'el': this.$el,
+                'data': this.$data,
+                'message': this.message
+            }
+            console.log(this.$el);
+            console.log(state);
+        },
+        methods: {
+          methodsFun: function(){
+              console.log(33);
+          }
+        },
+        destroyed: function () {
+            console.group('destroyed 销毁完成状态===============》');
+            var state = {
+                'el': this.$el,
+                'data': this.$data,
+                'message': this.message
+            }
+            console.log(this.$el);
+            console.log(state);
+        },
+        components: {
+            'my-components': child
+        }
+    });
+</script>
+</html>
