@@ -6,11 +6,14 @@
 	</head>
 	<body>
 		<script>
+		//arguments是一个类数组对象，函数的所有传入参数会存在这个对象里面
 			function realizeNew() {
+				console.log(arguments)
 				//创建一个新对象
 				let obj = {};
 				//获得构造函数
-				let Con = [].shift.call(arguments);
+				let Con = [].shift.call(arguments);//把arguments的第一个值取出来
+				//第一个值就是它的构造函数 
 				//链接到原型（给obj这个新生对象的原型指向它的构造函数的原型）
 				obj.__proto__ = Con.prototype;
 				//绑定this
@@ -29,20 +32,40 @@
 
 			//通过new创建构造实例
 			let person1 = new Person("Curry", 18);
+			console.log(person1)
 			console.log(person1.name); //"Curry"
 			console.log(person1.age); //18
 			person1.say(); //"I am Curry'
 
 			//通过realize()方法创造实例
 			let person2 = realizeNew(Person, "Curry", 18);
+			console.log(person2)
 			console.log(person2.name); //"Curry"
 			console.log(person2.age); //18
 			person2.say(); //"I am Curry'
 
 			var a = new Date() // Tue Jan 29 2019 20:31:15 GMT+0800 (中国标准时间)
 			
+			
+			function new_function(){
+				var obj = {}
+				var proto = [].shift.call(arguments)
+				obj.__proto__ = proto.prototype
+				var result = proto.apply(obj,arguments)
+				return obj
+			}
+			
+			function student(name,age){
+				this.name = name
+				this.age = age
+			}
+			
+			var s1 = new student("小王",25)
+			var s2 = new_function(student,"小王",25)
+			console.log(s1)
+			console.log(s2)
 
-			fn() // undefined
+			// fn() // undefined
 		</script>
 	</body>
 </html>
