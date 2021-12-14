@@ -18,6 +18,8 @@
 				obj.__proto__ = Con.prototype;
 				//绑定this
 				let result = Con.apply(obj, arguments);
+				//上面这一行是让构造函数的this指针指向该对象，即
+				//为该对象赋予方法和属性 
 				//确保new出来的是一个对象
 				return typeof result === "object" ? result : obj
 			}

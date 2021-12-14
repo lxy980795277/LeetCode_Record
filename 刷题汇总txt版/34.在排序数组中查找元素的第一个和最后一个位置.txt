@@ -27,3 +27,38 @@ class Solution {
         return res;
     }
 }
+
+
+
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int[] res = new int[] {-1, -1};
+        int pos = binarySearch(nums,target);
+        if(nums.length>0&&(nums[pos] == target)){
+            int last = pos;
+            while(last<nums.length&&nums[last] == target){
+                last++;
+            }
+            res[0] = pos;
+            res[1] = last-1;
+        }
+        return res;
+    }
+    //leftOrRight为true找左边界 false找右边界
+    public int binarySearch(int[] nums, int target) {
+        int len =  nums.length;
+        int left = 0;
+        int right = len-1;
+        int middle = 0;
+        while(left<right){
+            middle = (right+left) /2;
+            if(nums[middle]>=target){
+                right = middle;
+            }
+            else{
+                left = middle+1;
+            }
+        }
+        return left;
+    }
+}
