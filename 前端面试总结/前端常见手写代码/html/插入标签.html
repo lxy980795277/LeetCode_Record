@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div> hahaha</div>
+	</body>
+	
+	<script>
+	window.onload = function(){
+				var oUi = document.getElementsByTagName("div");
+				var str = "";
+				for(let i=0;i<100;i++){
+					str += "<div>哈哈哈哈哈</div>";
+				}
+	            oUi[0].innerHTML = str;
+	            var lii=document.getElementsByTagName("div")
+	            var lilen=document.getElementsByTagName("div").length;	
+
+	            for(let i=0;i<lilen;i++){
+	                lii[i].onclick =function(){
+	                    alert(i)
+	                }
+	            }
+	}</script>
+</html>
