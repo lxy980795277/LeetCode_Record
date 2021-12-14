@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		
+		function fun(n){
+			return new Promise(function(resolve,reject){
+				setTimeout(function(){
+					resolve(n+200)
+				},n)
+			})
+		}
+		// var a = fun(20).then((data)=>{
+		// 	console.log(data)
+		// })
+		// console.log(a)
+		
+		async function test(){
+			var time1 =  await fun(300)
+			console.log("time1 is ",time1)
+			
+			var time2 =  await fun(time1)
+			console.log("time2 is ",time2)
+			
+			var time3 =  await fun(time2)
+			console.log("time3 is ",time3)
+		}
+		
+		test()
+		
+		 function fun1(){
+			return new Promise(function(resolve,reject){
+				resolve(100)
+				 // reject(100)
+			})
+		}
+		
+		async function bbb(){
+			var a =  fun1()
+			
+			console.log(a)
+			a.then((data)=>{
+				console.log(data)
+			})
+			var b = await fun1()
+			console.log(b) //100 
+		}
+		bbb()
+		</script>
+	</body>
+</html>

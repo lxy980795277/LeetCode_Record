@@ -6,14 +6,22 @@
 	</head>
 	<body>
 		<script>
+		/*
+		async 函数是 generator 和 promise 实现的一个自动执行的语法糖，
+		它内部自带执行器，当函数内部执行到一个 await 语句的时候，
+		如果语句返回一个 promise 对象，那么函数将会等待 promise 对象的状态变为 resolve 后再继续向下执行。
+		因此可以将异步逻辑，转化为同步的顺序来书写，并且这个函数可以自动执行。
+		*/
+	   
 			//async返回的是一个promise对象
-			// async function test(){
-			// 	return "bbb"
-			// }
-			// var a = test().then((data)=>{
-			// 	console.log(data)
-			// })
-			// console.log(a)  //输出：promise{"bbb"}
+			async function test(){
+				return "bbb"
+			}
+			
+			var a = test().then((data)=>{
+				console.log(data)
+			})
+			console.log(a)  //输出：promise{"bbb"}
 
 
 			//2 现在举例，用 setTimeout 模拟耗时的异步操作，
@@ -86,7 +94,7 @@
 			}
 
 			doIt();
-			如果用 async/await 来实现呢，会是这样
+			//如果用 async/await 来实现呢，会是这样
 			async function doIt() {
 			    console.time("doIt");
 			    const time1 = 300;
@@ -98,6 +106,8 @@
 			}
 
 			doIt();
+			
+			
 
 			// c:\var\test>node --harmony_async_await .
 			// step1 with 300
