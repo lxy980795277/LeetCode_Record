@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+		#a{
+			height:200px;
+			width:200px;
+			background-color: #0000FF;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id = "a"></div>
+
+
+		<script>
+		var arr = []
+		var obj = {
+			width:0,
+			height:10
+		}
+		for(let i =0;i<10;i++){
+			arr.push(obj)
+		}
+		console.log(arr)
+		for (let i =0;i<10;i++) {
+		   	arr[i].width  = document.getElementById("a").offsetTop
+		}
+		    //这样的话会导致页面每次都要去从新的绘制，拿到offsetTop,下面就会好很多
+		var top = document.getElementById("a").offsetTop
+		for (let i=0;i<10;i++) {
+		   	arr[i].width  = top
+		}
+
+		
+		
+		</script>
+	</body>
+</html>
