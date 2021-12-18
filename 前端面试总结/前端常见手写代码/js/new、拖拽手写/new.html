@@ -59,13 +59,28 @@
 			
 			function student(name,age){
 				this.name = name
+			}
+			
+			var s1 = new student("小王")
+			var s2 = new_function(student,"小王")
+			console.log(s1)
+			console.log(s2)
+			
+			function teacher(name,age){
+				this.name = name
 				this.age = age
 			}
 			
-			var s1 = new student("小王",25)
-			var s2 = new_function(student,"小王",25)
-			console.log(s1)
-			console.log(s2)
+			function newteacher(){
+				var obj = {}
+				const proto = [].shift.call(arguments)
+				obj.__proto__ = proto.prototype
+				proto.apply(obj,arguments)
+				return obj
+			}
+			
+			var a = newteacher(teacher,"小王",25)
+			console.log(a)
 
 			// fn() // undefined
 		</script>

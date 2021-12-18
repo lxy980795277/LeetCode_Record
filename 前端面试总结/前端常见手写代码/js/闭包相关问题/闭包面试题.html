@@ -13,6 +13,28 @@
 					console.log(i)
 				}, 1000)
 			}
+			
+			for (var i = 0; i < 5; i++) {
+				(function(i){
+					setTimeout(() => {
+						console.log(i)
+					}, 1000)
+				})(i)
+			}
+			
+			async function aa (){
+				for(var i =0;i<5;i++){
+					var a = new Promise(function(resolve,reject){
+						setTimeout(() => {
+							resolve(i)
+						}, 100)
+						
+					})
+					
+				}
+			}
+			
+			aa()
 			/*
 			按照预期它应该依次输出1 2 3 4 5，而结果它输出了五次5，
 			这是为什么呢？原来由于js是单线程的，
@@ -31,32 +53,7 @@
 				})(i)
 			}
 
-			/*闭包的例子 2  */
-			/*local变量 和 bar函数就构成了一个闭包*/
-			function foo() {
-				var local = 1
-
-				function bar() {
-					local++
-					return local
-				}
-				return bar
-			}
-			var func = foo()
-			console.log(func())
-
-		//也可以通过promise的方法实现 
-			function a (){
-				for(var i =0;i<10;i++){
-					var a = new Promise(function(resolve,reject){
-						resolve(i)
-					})
-					a.then((data)=>{
-						console.log(data)
-					})
-				}
-			}
-			a()
+			
 		</script>
 	</body>
 </html>

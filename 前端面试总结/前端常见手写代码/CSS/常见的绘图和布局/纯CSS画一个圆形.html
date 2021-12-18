@@ -5,9 +5,15 @@
 		<title></title>
 	</head>
 	<body>
-		<div class = 'circle'>
+		<div class = 'circle'id="circle">
 			
 		</div>
+		
+		<input type="text" id = "test"/>
+		<input type="button"  id="btn"value = "提交" onclick="Ssubmit()"/>
+		
+		
+		<div id = 'divv'>哈哈哈</div>
 	</body>
 	<style>
 	.circle{
@@ -15,6 +21,38 @@
 		width:200px;
 		border-radius: 50%;
 		background-color: #4EEE46;
+		animation: ani 0.5s;
+	}
+	
+	@-webkit-keyframes ani{
+		from{
+			border:50px solid red;
+		}
+		to{
+			border:0px solid blue;
+			
+		}
 	}
 	</style>
+	
+	<script>
+	// var a  =document.getElementById("btn")
+	// a.addEventListener("click",function(){
+	// 	// console.log("asdsa")
+		
+	// })
+	function Ssubmit(e){
+		var a = document.getElementById("test")
+		console.log(a.value)
+	}
+	window.onload = function (e){
+		var a = document.getElementById("divv")
+		var s = ""
+		console.log(a)
+		for(let i=0;i<100;i++){
+			s +="<div> 哈哈哈</div>"
+		}
+		a.innerHTML = s
+	}
+	</script>
 </html>

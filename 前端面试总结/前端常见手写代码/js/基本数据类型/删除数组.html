@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+		
+		var a  =[1,2,3,4]
+		a.reverse() //数组翻转
+		console.log(a) 
+		
+		var a  =[1,2,3,4]
+		a.push(5) //在数组的最后添加一个新元素
+		console.log(a) 
+		
+		var a = [1,2,3,4]
+		var b = a.pop()  //删除数组的最后一项
+		console.log(a) 
+		console.log(b)
+		
+		var a = [1,2,3,4]
+		var b = a.shift()    //删除数组的第一项
+		console.log(a)
+		console.log(b)
+		
+		
+		var a = [1,2,3,4]
+		var b = a.unshift(5)    //向数组的第一项添加一个新元素
+		console.log(a)			
+		console.log(b)
+		
+		var a = [1,2,3,4]
+		var b = a.slice()		//复制一个全新的数组 而非数组a的引用
+		b[0] = 5
+		console.log(b)
+		console.log(a)
+		
+		
+		var a = [1,2,3,4]
+		a.splice(0,1) //删除数组中的元素，从下标为0开始，删除两个数
+		//如果第二个参数不指定，则全部删掉了
+		console.log(a)
+		
+		var a = [1,2,3,4]
+		a.splice(0,0,1,2,3,4,5,6,7) // 如果指定了第三个参数，则变为向数组中的指定位置添加
+		//第二个参数必须设为0 才可以添加
+		//第一个参数表明起始下标，第二个参数表用删除长度（为0表示不删除），第三个
+		//参数表明要添加的元素
+		console.log(a)
+		
+
+		
+		
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/*闭包的例子 2  */
+			/*local变量 和 bar函数就构成了一个闭包*/
+			function foo() {
+				var local = 1
+		
+				function bar() {
+					local++
+					return local
+				}
+				return bar
+			}
+			var func = foo()
+			console.log(func())
+		
+		//也可以通过promise的方法实现 
+			async function a (){
+				for(var i =0;i<10;i++){
+					var a = new Promise(function(resolve,reject){
+						resolve(i)
+					})
+				// var b = await a.then((data)=>{
+				// 	console.log(data)
+				// })
+				var b = a.then((data)=>{
+					console.log(i)
+				})
+				}
+			}
+			a()
+		
+		</script>
+	</body>
+</html>
