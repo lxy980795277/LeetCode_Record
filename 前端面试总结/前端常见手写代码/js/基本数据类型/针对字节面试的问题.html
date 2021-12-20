@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		
+		
+		var a 
+		console.log(a) //输出为undefine 表示变量声明了但是没有初始化，不存在定义
+		var b = null
+		console.log(b) //输出为null ，表示变量被定义了，但是定义为空值
+		
+		console.log(typeof(null))  //输出为object
+		//因为在最初的时候，null是表示一个为”无“的对象，转为数值时候为0
+		//undefine转为数值的时候为NAN 
+		/*清空数组的方法*/
+		var arr = [1,2,3];
+		arr.length = 0;
+		console.log(arr);//[]  //通过将数组长度设为0 清空数组
+		
+		var arr = [1,2,3];
+		arr.splice(0,arr.length);  
+		console.log(arr);//[]  //通过使用splice方法，从0下标开始删除长度为length的数
+		
+		var arr = [1 ,2 ,3];
+		arr = []; 
+		console.log(arr);  //将数组指向一个新数组，实际上并没有清楚原数组的内容
+		
+		
+		</script>
+	</body>
+</html>
