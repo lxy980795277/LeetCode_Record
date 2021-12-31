@@ -30,6 +30,50 @@
 		console.log(arr);  //将数组指向一个新数组，实际上并没有清楚原数组的内容
 		
 		
+		//判断优先级，如果等号两边出现了布尔值，则先把布尔值变为数字类型
+		//如果等号两边没有布尔值，一遍是对象类型，另一边是字符类型，则要把对象类型变为字符类型
+		//如果一边是数字类型，一边是字符类型，则要把字符类型变为数字类型
+		//如果等号两边没有布尔值且没有字符类型，则把两边都变为数字类型
+		console.log(NaN == NaN)  //false
+		//特殊的值 他和自身不相等
+		
+		console.log(false == "false") //false
+		//首先把左边的false变为0 ,0=="false"，
+		//再把左边的0变为"0","0" == "false" 所以为false
+		console.log([false] == "false") //true
+		//把左边的对象类型变为字符类型，因此左边变为"false"
+
+		console.log("1" == 1)		 //true
+		//一边出现字符串另一边是数字，把字符号串变为数字
+		
+		console.log([1,2,3] == [1,2,3]) //false
+		//两个数组的地址不一样 所以是false
+		
+		console.log(null == undefined)   //true
+		//undefined 是从 null 派生出来的 所以是true
+		
+		console.log(false == [])   //true
+		//先把左边变为0 ，0==[]，再把右边的对象先变为字符类型再变为数字类型，
+		//0=="" 再变为 0 == 0 所以为true
+		
+		console.log(false == "")  //true
+		//先把左边变为0 0==“” 再把空字符变为0  所以0 == 0 为true
+		
+		console.log(false == ![])  //true
+		//先把！[]变为false 左右都为0 == 0 所以为true
+		
+		console.log("" == null)  //false
+		//null在==的时候不进行类型转换 所以为false
+		console.log(typeof(null)) // object
+		/*在JS中进行数据底层存储的时候是用二进制存储的，这是一定的，而且它的前三位是代表存储的数据类型，
+		而000是代表object类型也就是引用类型的数据。而null正好全是0，
+		所以它巧妙的符合object类型的存储格式，所以在typeof检测的时候，它才会输出object。*/
+	
+		
+
+		
+		
+		
 		</script>
 	</body>
 </html>

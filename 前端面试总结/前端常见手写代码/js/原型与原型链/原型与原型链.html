@@ -7,16 +7,18 @@
 	<body>
 		<script>
 			var obj = {
-				name:"张三"
+				name: "张三"
 			}
 			console.log(obj)
 			console.log(Object.getPrototypeOf(obj)) //输出它的原型 
-			console.log(obj.toString())   //输出[object Object]
-			console.log(obj.valueOf())   //输出 {name:"张三"}
-			console.dir(obj) 			 //输出该对象的方法和属性
-			
-			
-			
+			console.log(obj.toString()) //输出[object Object]
+			console.log(obj.valueOf()) //输出 {name:"张三"}
+			console.dir(obj) //输出该对象的方法和属性
+			function Hehe(name) {
+				this.name = name;
+			}
+			var h = new Hehe("笑你妹");
+			console.log(h)
 		</script>
 	</body>
 </html>

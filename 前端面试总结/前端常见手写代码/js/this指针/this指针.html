@@ -32,7 +32,7 @@
 		//3 函数调用模式  this指向全局变量，因为this指向的是window全局对象
 		var test =111
 		var b = function(){
-			console.log(test)
+			console.log(this.test)
 		}
 		b()
 		
