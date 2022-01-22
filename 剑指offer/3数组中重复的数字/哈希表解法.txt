@@ -1,0 +1,19 @@
+class Solution {
+    public int findRepeatNumber(int[] nums) {
+        //时间 N 空间 N
+        //建立一个哈希表，从头到尾遍历，未出现过就加入哈希表，
+        //否则就直接返回
+        
+        HashMap <Integer,Integer> map = new HashMap<>();
+        int length = nums.length;
+        for(int i =0;i<length;i++){
+            if(!map.containsKey(nums[i])){
+                map.put(nums[i],i);
+            }
+            else{
+                return nums[i];
+            }
+        }
+        return 0;
+    }
+}

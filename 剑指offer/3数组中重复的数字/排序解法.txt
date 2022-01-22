@@ -1,0 +1,14 @@
+class Solution {
+    public int findRepeatNumber(int[] nums) {
+        //时间 NlogN 空间 1
+        //先排序，然后判断前后两个相邻的数是否相同 相同就直接返回
+        Arrays.sort(nums);
+        int length = nums.length;
+        for(int i =1;i<length;i++){
+            if(nums[i-1] == nums[i]){
+                return nums[i];
+            }
+        }
+        return 0;
+    }
+}
