@@ -1,0 +1,45 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    List<List<Integer>> res = new ArrayList<>();
+    public List<List<Integer>> pathSum(TreeNode root, int target) {
+        List<Integer> mid = new ArrayList<>();
+        if(root!= null){
+            dfs(root,target,mid,0);
+        }
+        return res; 
+    }
+    public void dfs(TreeNode p,int target,List<Integer> mid,int now){
+        if( p == null ){
+            return ;
+        }
+        mid.add(p.val);
+        now += p.val;
+        if(now == target && p.left==null&& p.right ==null){
+            res.add(new ArrayList<>(mid));
+            // res.add(mid);
+            //这里如果写成mid 那么就全是错的 
+        }
+        if(p.left != null){
+            dfs(p.left,target,mid,now);
+        }
+        if(p.right != null){
+            dfs(p.right,target,mid,now);
+        }
+        now = now - mid.get(mid.size()-1);
+        mid.remove(mid.size()-1);
+    }
+}

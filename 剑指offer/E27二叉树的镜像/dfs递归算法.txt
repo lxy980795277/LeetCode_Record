@@ -1,0 +1,33 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    //深度优先遍历的递归算法
+    //递归三部曲
+    //1、确定递归函数的意义 dfs用来把每一个节点的左右子树互换
+    //2、递归停止的条件，当前节点为空，或者当前节点为叶子节点（当前节点的左右子树都为空）
+    //3、每一层递归之间的切换，交换完本层节点的左右子树后即可进入下一层
+    public TreeNode mirrorTree(TreeNode root) {
+        dfs(root);
+        return root;
+    }
+    public void dfs(TreeNode p){
+        if(p == null){
+            return;
+        }
+        if(p.left == null && p.right == null){
+            return ;
+        }
+        TreeNode tmp = p.left;
+        p.left = p.right;
+        p.right = tmp;
+        dfs(p.left);
+        dfs(p.right);
+    }
+}

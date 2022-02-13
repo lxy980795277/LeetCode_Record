@@ -1,0 +1,34 @@
+class Solution {
+    public int translateNum(int num) {
+        //动态规划
+        //1、dp数组 dp[i]表示长度为i的数字的种类数量
+        //2、递推公式 分为两种情况
+        //由于最多只能2位数翻译成一个字母
+        //第一种情况:dp[i] = dp[i-1] 任何序列一定能够这样拆分，因为可以看做是第i位单独翻译，所以和dp[i]的情况一样
+        //第二种情况：dp[i]和其前一位 即第i-1位和第i位能够构成一个字母，那么这时候dp[i] = dp[i-2]
+        //因此应该把这两种情况相加 dp[i] = dp[i-1] + dp[i-2]，每次需要判断第二种情况是否成立，而第一种情况永远成立
+        //3、dp数组初始化 dp[1] = 1 dp[0] = 1 dp[0]=1 是方便序列的前两位进行判断，无实际意义
+        //4、数组范围 从1到n 
+        //5、dp数组举例子 dp[4] = dp[3] + dp[2] （dp[2]判断成立）
+        String s = String.valueOf(num);
+        int length = s.length();
+        if(length<=1){
+            return length;
+        }
+        int[] dp = new int[length+1];
+        dp[0] = 1;
+        dp[1] = 1;
+        for(int i =2;i<=length;i++){
+            String two = s.substring(i-2,i);
+            System.out.println(two);
+            int mid = Integer.valueOf(two);
+            if(mid>=10 && mid <=25 ){
+                dp[i] = dp[i-1] + dp[i-2];
+            }
+            else{
+                dp[i] = dp[i-1];
+            }
+        }
+        return dp[length];
+    }
+}

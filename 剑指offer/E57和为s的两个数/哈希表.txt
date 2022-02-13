@@ -1,0 +1,19 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        //哈希表的解法 
+        //时间N 空间N
+        HashMap<Integer,Integer> map  = new HashMap<>();
+        int length = nums.length;
+        int [] res = new int[2];
+        for(int i =0;i<length;i++){
+            if(map.containsKey(target-nums[i])){
+                res[0] = target-nums[i];
+                res[1] = nums[i];
+            }
+            if(!map.containsKey(nums[i])){
+                map.put(nums[i],i);
+            }
+        }
+        return res;
+    }
+}

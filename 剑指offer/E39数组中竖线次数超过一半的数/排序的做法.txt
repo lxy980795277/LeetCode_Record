@@ -1,0 +1,11 @@
+class Solution {
+    //排序 如果一个数出现的次数超过一半，那么对这个数组排序后，这个数出现的位置一定是在数组的后半段，且最中间的元素一定是这个数
+    public int majorityElement(int[] nums) {
+        int length = nums.length;
+        if(length<=2){
+            return nums[0];
+        }
+        Arrays.sort(nums);
+        return nums[length/2];
+    }
+}

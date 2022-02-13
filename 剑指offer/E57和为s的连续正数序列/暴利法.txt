@@ -1,0 +1,36 @@
+class Solution {
+    public int[][] findContinuousSequence(int target) {
+        //双重for循环暴利遍历法
+        //从每个数开始 都判断一遍 是否从这个数开始 能够满足连续的条件
+        List<List<Integer>> list = new ArrayList<>();
+        for(int i =1;i<target;i++){
+            List<Integer> mid = new ArrayList<>();
+            int num = 0;
+            for(int j =i;j<target;j++){
+                if(num == target){
+                    list.add(mid);
+                    break;
+                }
+                if(num>target){
+                    break;
+                }
+                else{
+                    mid.add(j);
+                    num += j;
+                }
+            }
+        }
+        int length = list.size();
+        int[][] res = new int[length][];
+        for(int k = 0;k<length;k++){
+            int [] arr = new int [list.get(k).size()];
+            for(int m =0;m<list.get(k).size();m++){
+                arr[m] =list.get(k).get(m); 
+            }
+            System.out.println(length);
+            res[k] = arr;
+        }
+        return res;
+
+    }
+}

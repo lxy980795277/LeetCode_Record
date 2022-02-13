@@ -1,0 +1,33 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    //dfs递归做法
+    //递归三部曲 
+    //1、确定递归函数的作用 如果当前层有节点，那么深度就+1
+    //2、递归结束的标志 当前节点为空 即上一个节点已经到了叶子节点
+    //3、递归每一层之间的传递 当前节点不为空 则进入下一层 
+    //改进做法 去掉了全局变量 通过一个变量指明当前的递归层数
+    int max = 0;
+    public int maxDepth(TreeNode root) {
+        if(root == null){
+            return 0;
+        }
+       return dfs(root,0);
+    }
+
+    public int dfs(TreeNode p,int depth){    
+        if(p == null){
+            return depth;
+        }
+        int left =  dfs(p.left,depth+1);
+        int right = dfs(p.right,depth+1);
+        return left>right?left:right;
+    }
+}

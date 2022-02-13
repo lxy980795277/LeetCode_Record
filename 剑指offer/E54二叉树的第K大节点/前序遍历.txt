@@ -1,0 +1,35 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    //前序遍历即可
+    //前序遍历的结果是一个递增的数列 
+    //输出第k大的数，即为输出倒数第k个数 通过动态数组即可完成 
+    public int kthLargest(TreeNode root, int k) {
+        ArrayList <TreeNode> list = new ArrayList <>();
+        if(root == null){
+            return 0;
+        }
+        dfs(root,list);
+        return list.get(list.size()-k).val;
+    }
+    public void dfs (TreeNode p ,ArrayList<TreeNode> list){
+        if(p == null){
+            return ;
+        }
+        if(p.left!=null){
+            dfs(p.left,list);
+        }
+        list.add(p);
+        if(p.right !=null){
+            dfs(p.right,list);
+        }
+        return ;
+    }
+}

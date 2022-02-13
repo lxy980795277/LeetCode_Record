@@ -1,0 +1,24 @@
+class Solution {
+    public int[] constructArr(int[] a) {
+        //累乘两遍
+        // 先从左往右乘一遍，此时，每一个数的位置上的结果，保存的是这个数左边所有数的乘积
+        //再从右往左乘一遍，这时候，把每个数右边的所有数也乘进去了，所以这时候的结果，就是除了这个数之外所有数的乘积
+        int length = a.length;
+        if(length == 0){
+            return new int[0];
+        }
+        int [] res = new int[length];
+        int tmp = 1;
+        res[0] = 1;
+        for(int i =1;i<length;i++){
+            tmp = tmp * a[i-1];
+            res[i] = tmp;
+        }
+        tmp = 1;
+        for(int j = length-2;j>=0;j--){
+            tmp = tmp * a[j+1];
+            res[j] = res[j] * tmp;
+        }
+        return res;
+    }
+}

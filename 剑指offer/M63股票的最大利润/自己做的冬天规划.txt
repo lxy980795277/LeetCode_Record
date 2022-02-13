@@ -1,0 +1,42 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        //动态规划
+
+        //1、dp[i]表示截止到第i天的最大利润
+        //2、递推公式 首先需要记录买入股票是哪一天，buy变量
+        //同时，随着天数增加，可能会出现比buy更加低的价格，我们应该尽可能在价格更低的时候买入，但是这时候需要进行比较，以mid记录下所有比buy更低的价格。
+        //如果prices[i] - prices[buy]> dp[i-1] 说明应该在第i天卖出，
+        //更新dp[i] = prices[i] - prices[buy]
+        //随后需要判断，在这期间可能会出现更低的价格，因此需要在判断
+        //prices[i] - prices[mid]和dp[i]的大小，如果前者大，我们需要将买入天数更改，buy=mid  并且更新dp[i] = prices[i] - prices[mid]
+        //3、dp数组初始化 dp[0] = 0
+        //4、dp数组的范围 从0到length-1;
+        //5、举例子 
+        int length = prices.length;
+        if(length<=1){
+            return 0;
+        }
+        int[] dp = new int[length+1];
+        dp[0] = 0;
+        int buy = 0;
+        int mid =0;
+        for(int i =1;i<length;i++){
+            if(prices[i]<prices[mid]){
+                mid = i;
+            }
+            int p = prices[i] - prices[buy];
+            int q = prices[i] - prices[mid];
+            if(p>dp[i-1]){
+                dp[i] = p;
+            }
+            else{
+                dp[i] = dp[i-1];
+            }
+            if(dp[i]<=q){
+                dp[i] = q;
+                buy = mid;
+            }
+        }
+        return dp[length-1];
+    }
+}

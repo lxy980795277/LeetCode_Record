@@ -1,0 +1,15 @@
+class Solution {
+    public int[] constructArr(int[] a) {
+        //双循环超时算法
+        int length = a.length;
+        int [] res = new int[length];
+        for(int i=0;i<length;i++){
+            int tmp = 1;
+            for(int j =0;j<length;j++){
+                tmp = j==i?tmp:tmp*a[j];
+            }
+            res[i] = tmp;
+        }
+        return res;
+    }
+}

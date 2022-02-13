@@ -1,0 +1,34 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    //用栈的方法 
+    //时间 2N 空间 N 
+    //
+    public ListNode reverseList(ListNode head) {
+        if(head == null){
+            return null;
+        }
+        ArrayList <ListNode> list = new ArrayList<>();
+        ListNode mid = new ListNode();
+        ListNode p = head;
+        while(p!=null){
+            list.add(p);
+            mid = p;
+            p = p.next;
+            mid.next = null;
+        }
+        ListNode res = new ListNode();
+        ListNode q = res;
+        for(int i =list.size()-1;i>=0;i--){
+            q.next = list.get(i);
+            q = q.next;       
+        }
+        return res.next;
+    }
+}

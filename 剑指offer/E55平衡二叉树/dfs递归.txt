@@ -1,0 +1,27 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    boolean res = true;
+    public boolean isBalanced(TreeNode root) {
+        int depth = dfs(root,0);
+        return res;
+    }
+    public int dfs(TreeNode p,int depth){
+        if(p == null){
+            return depth;
+        }
+        int left = dfs(p.left,depth+1);
+        int right = dfs(p.right,depth+1);
+        if(Math.abs(left-right)>1){
+            res = false;
+        }
+        return left>right?left:right;
+    }
+}

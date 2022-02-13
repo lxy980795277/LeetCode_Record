@@ -1,0 +1,22 @@
+class Solution {
+    public int[] exchange(int[] nums) {
+        int length = nums.length;
+        int left = 0;
+        int right = length-1;
+        int tmp = 0;
+        while(left<right){
+            while( left < right && nums[left] %2 == 1){
+                left++;
+            }
+            while(left < right && nums[right] %2 == 0){
+                right --;
+            }
+            System.out.println(left);
+            System.out.println(right);
+            tmp = nums[left];
+            nums[left] = nums[right];
+            nums[right] = tmp;
+        }
+        return nums;
+    }
+}

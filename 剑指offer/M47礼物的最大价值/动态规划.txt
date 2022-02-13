@@ -1,0 +1,37 @@
+class Solution {
+    public int maxValue(int[][] grid) {
+        //动态规划
+        //时间 N方 空间 N方
+        //1、dp[i][j]表示走到grid[i][j]时候所取得礼物的最大值
+        //2、递推公式 dp[i][j] = Max(dp[i-1][j],dp[i][j-1])+grid[i][j]
+        //假设从当前的位置走到dp[i][j]只有两种走法，要么从dp[i-1][j]的位置向下走一步，要么从dp[i][j-1]的位置向右走一步
+        //3、dp[0][0] = grid[0][0]
+        //4、遍历范围为从[0][0]到[m-1][n-1]
+        //5、举例子 dp[1][1] = max(dp[0][1],dp[1][0])+grid[1][1]
+        
+        int m = grid.length;
+        int n = grid[0].length;
+        int[][] dp = new int[m][n];
+        if(m==0 || n == 0){
+            return 0;
+        }
+        dp[0][0] = grid[0][0];
+        for(int i =0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(i==0 && j == 0){
+                    continue;
+                }
+                if(j-1<0){
+                    dp[i][j] = dp[i-1][j]+grid[i][j];
+                    continue;
+                }
+                if(i-1<0){
+                    dp[i][j] = dp[i][j-1]+grid[i][j];
+                    continue;
+                }
+                dp[i][j] = Math.max(dp[i-1][j],dp[i][j-1]) + grid[i][j];
+            }
+        }
+        return dp[m-1][n-1];
+    }
+}

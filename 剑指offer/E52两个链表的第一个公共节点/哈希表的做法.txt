@@ -1,0 +1,34 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    //哈希表的方法 
+    //时间 M+N 空间 M+N
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if(headA == null||headB == null){
+            return null;
+        }
+        HashMap <ListNode,Integer> map = new HashMap<>();
+        ListNode p = headA;
+        ListNode q = headB;
+        while(p !=null){
+            map.put(p,p.val);
+            p = p.next;
+        }
+        while(q!=null){
+            if(map.containsKey(q)){
+                return q;
+            }
+            q = q.next;
+        }
+        return null;
+    }
+}

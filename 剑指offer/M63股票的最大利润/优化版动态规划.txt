@@ -1,0 +1,27 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        //动态规划 修改版 
+        //1、dp[i]表示截止到第i天的最大利润
+        //2、递推公式 只用维护一个buy变量，记录下股票的历史最低点
+        //应该尽可能在股票价格最低的时候买入，所以我们在每一天都假设是在历史最低点买入并且在这一天卖出，能挣多少钱，如果这个利润大于前一天卖出的利润，就更新利润
+        //所以递推公式为dp[i] = max(dp[i-1],prices[i] - prices[buy])
+        //3、dp数组初始化 dp[0] = 0
+        //4、dp数组的范围 从0到length-1;
+        //5、举例子 dp[4] = Math.max(dp[3],princes[4]-princes[buy])
+        int length = prices.length;
+        if(length<=1){
+            return 0;
+        }
+        int[] dp = new int[length+1];
+        dp[0] = 0;
+        int buy = 0;
+        for(int i =1;i<length;i++){
+            if(prices[i] < prices[buy]){
+                buy = i;
+            }
+            int loss = prices[i] - prices[buy];
+            dp[i] = loss>dp[i-1]?loss:dp[i-1];
+        }
+        return dp[length-1];
+    }
+}

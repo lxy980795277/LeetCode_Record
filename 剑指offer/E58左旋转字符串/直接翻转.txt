@@ -1,0 +1,10 @@
+class Solution {
+    public String reverseLeftWords(String s, int n) {
+        String res = "";
+        int length = s.length();
+        String left = s.substring(0,n);
+        String right = s.substring(n,length);
+        res = right + left;
+        return res;
+    }
+}

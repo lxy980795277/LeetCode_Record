@@ -1,0 +1,46 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    //二叉树的二分查找 解题思路就是 
+    //分别找到从根节点到p节点和q节点的路径，保存下来
+    //遍历这两个路径，最后一个相同的节点，即为他们的最近公共祖先
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        ArrayList <TreeNode> list1 = new ArrayList<>();
+        ArrayList <TreeNode> list2 = new ArrayList<>();
+        TreeNode res = null;
+        list1 = search(list1,root,p);
+        list2 = search(list2,root,q);
+        int i =0;
+        while(true){
+            if(i>list1.size()-1||i>list2.size()-1){
+                break;
+            }
+            if(list1.get(i) == list2.get(i)){
+                res = list1.get(i);
+                i++;
+            }
+            else{
+                break;
+            }
+        }
+        return res;
+    }
+
+    public ArrayList<TreeNode> search(ArrayList <TreeNode> list,TreeNode p,TreeNode q){
+        while(p!=null){
+            list.add(p);
+            if(p == q){
+                return list;
+            }
+             p = p.val>q.val?p.left:p.right;
+        }
+        return list;
+    }
+}

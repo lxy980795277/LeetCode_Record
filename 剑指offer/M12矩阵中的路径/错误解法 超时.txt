@@ -1,0 +1,42 @@
+class Solution {
+    boolean res = false;
+    public boolean exist(char[][] board, String word) {
+        int row = board.length;
+        int column = board[0].length;
+        if(row == 0|| column ==0){
+            return false;
+        }
+        boolean[][] visit = new boolean[row][column];
+        for(int i =0;i<row;i++){
+            for(int j =0;j<column;j++){
+                if(res == true){
+                    return res;
+                }
+                if(board[i][j] == word.charAt(0)){
+                    dfs(board,i,j,0,word,visit);
+                }
+            }
+        }
+        return res;
+    }
+
+    public void dfs(char[][]board,int m,int n,int index,String word,boolean[][] visit){ 
+        if(m < 0 || m >= board.length || n < 0 || n >= board[0].length || index>=word.length() || visit[m][n] == true ||board[m][n] != word.charAt(index)){
+            return;
+        } 
+        visit[m][n] = true;
+        if(index == word.length()-1){
+            res = true;
+            return ;
+        }
+        else{
+            //错误解法
+            //这里没有剪枝操作 假设当前已经找到了一条路径 那么还是会执行后面的所有代码 会造成严重超时 应该直接返回 
+            dfs(board,m+1,n,index+1,word,visit);
+            dfs(board,m-1,n,index+1,word,visit);
+            dfs(board,m,n+1,index+1,word,visit);
+            dfs(board,m,n-1,index+1,word,visit);
+            visit[m][n] = false;
+        }
+    }
+}
