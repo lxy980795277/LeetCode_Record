@@ -11,6 +11,7 @@
 			var b = [5,7,8,9,10]
 			var d = b.constructor == Array
 			var c = b instanceof Array
+			console.log(b._proto_)
 			console.log(c)    //true
 			console.log(d)   //true
 			console.log(b.__proto__ == Array.prototype) //true 

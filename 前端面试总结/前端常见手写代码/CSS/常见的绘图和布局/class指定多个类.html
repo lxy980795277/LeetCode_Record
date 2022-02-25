@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div class = "three one two "></div>
+	</body>
+	<style>
+	/* class里面指定了多个类，每一个类之间是平级关系，与他们出现的先后位置无关
+	只与在style样式表里面出现的先后顺序有关 。
+	这个例子的结果显示为橘色，即便是three在class里面是第一个出现，
+	但是在style样式表里面，style最后出现，他会覆盖掉之前的所有类别，
+	但是如果加了!Important属性，则会强制性把这条属性显示，因为它的优先级
+	是最高的 。
+	*/
+	.one{
+		width:100px;
+		height:100px;
+		background-color: #0000FF;
+	}
+	.two{
+		width:100px;
+		height:100px;
+		/* background-color: #68ff3e !important; */
+		/*如果加了!Important，那么这个属性为强制性质得优先显示 */
+		background-color: #68ff3e ;
+		
+	}
+	.three{
+		width:100px;
+		height:100px;
+		background-color: #ff5c2b;
+	}
+	
+	</style>
+</html>

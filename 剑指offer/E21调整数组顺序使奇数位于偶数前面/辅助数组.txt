@@ -1,0 +1,20 @@
+class Solution {
+    public int[] exchange(int[] nums) {
+        int length = nums.length;
+        int [] res = new int [length];
+        if(length == 0){
+            return res;
+        }
+        int left = 0;
+        int right = length -1;
+        for(int i =0;i<length;i++){
+            if(nums[i]%2 == 1) {
+                res[left++] = nums[i];
+            }
+            else{
+                res[right--] = nums[i];
+            }
+        }
+        return res;
+    }
+}

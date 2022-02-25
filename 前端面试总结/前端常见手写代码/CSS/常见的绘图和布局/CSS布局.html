@@ -14,7 +14,7 @@
 		<!-- z-index的详情 元素必须有position属性，z-index才可以生效 -->
 		<div class = 'a'></div>
 		<div class = 'b'></div>
-		<div class = 'a'></div>
+		<div class = 'c'></div>
 		
 		<!-- 实现圣杯布局 -->
 		<!-- 圣杯布局就是两边宽度固定，中间宽度自适应 -->
@@ -53,7 +53,7 @@
 	.a{
 		height:200px;
 		width:200px;
-		background-color: #172755;
+		background-color: #ffd115;
 		position: relative;  
 		/* 必须有position属性才可以 z-index越大，元素越靠上*/
 		/* z-index:1000; */
@@ -66,12 +66,19 @@
 		/* 如果为relative 则不脱离原来的文件流布局 原来的位置会留下空白填充 */
 		top:100px;
 	}
+	.c{
+		height:200px;
+		width:200px;
+		background-color: #59a4ff;
+		position: relative;  
+	}
 	.container{
 		/* height:200px; */
 		width:100%;
 		display: flex;
 		flex-direction: row;
 		overflow: hidden;
+		/* position: absolute; */
 	}
 	
 	.header{
@@ -102,13 +109,15 @@
 	}
 	
 	.center_{
-		margin-top:200px;
+		margin-top:50px;
 		height:200px;
 		width:200px;
 		background-color: #FF0000;
+		/* position: absolute; */
 
 	}
 	.center_in{
+		position: absolute;
 		height:50px;
 		width: 50px;
 		background-color: #4EEE46;

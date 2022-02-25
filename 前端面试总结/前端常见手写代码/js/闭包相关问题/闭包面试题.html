@@ -28,9 +28,10 @@
 						setTimeout(() => {
 							resolve(i)
 						}, 100)
-						
 					})
-					
+					b = await a.then((data)=>{
+						console.log(data)
+					})
 				}
 			}
 			

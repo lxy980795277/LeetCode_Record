@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		for (let i = 1; i <= 5; i++) {
+			// (function(j) {
+			setTimeout(function timer() {
+				console.log(i)
+			}, i * 100)
+			// })(i)
+		}
+
+		(function() {
+			var varTest = 'test var OK.';
+			let letTest = 'test let OK.';
+
+			{
+				var varTest = 'varTest changed.';
+				let letTest = 'letTest changed.';
+			}
+
+			console.log(varTest); //输出"varTest changed."，
+			//内部"{}"中声明的varTest变量覆盖外部的letTest声明
+			console.log(letTest); //输出"test let OK."，
+			//内部"{}"中声明的letTest和外部的letTest不是同一个变量
+		}());
+		var name = "window";
+		var obj = {
+			name: "obj",
+			getName: function() {
+				console.log(this.name);
+			}
+		}
+		obj.getName()
+		console.log(obj.name)
+		
+		var b = {
+			name:"b",
+			fun:()=>{   
+				console.log(this.name)
+			},
+			fun2:function(){
+				console.log(this.name)
+			}
+		}
+		b.fun()  //输出为window
+		b.fun2() //输出为b 
+		//证明箭头函数的this指针始终指向window对象
+		
+		var c = {
+			// name:"小王"
+		}
+		console.log(c.__proto__)
+		//注意这里的__proto__是两个下划线 每一遍都是两个下划线
+		
+		
+	</script>
+</html>

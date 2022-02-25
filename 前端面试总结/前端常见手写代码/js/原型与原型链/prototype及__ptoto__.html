@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+	
+	function  fun(age,sex){
+		this.age = age
+		this.sex = sex
+	}
+	
+	var a = new fun(5,1)
+	console.log(fun.prototype) 
+	//输出该函数的构造函数 {constructor:f,__proto__:Object}
+	console.dir(fun)
+	//输出该函数的所有属性和属性值，包括argements(参数列表),length(参数长度),
+	//成员变量，prototype,__proto__
+	console.log(a)
+	//每声明一个函数的时候，该函数就自动创建了prototype属性，该属性指向该函数的
+	//构造函数，即原型
+	//而每个对象都具有 __proto__属性，该属性指向的是该对象的构造函数的prototype
+	//即指向了该对象构造函数的构造函数 
+	console.log(a.__proto__==fun.prototype)
+
+	//输出true 
+	</script>
+</html>

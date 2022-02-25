@@ -7,14 +7,19 @@
 	<body>
 		<div class = 'out'>
 			<div class = 'cssbox'></div>
-			<div class = 'cssbox1'></div>
+			<!-- <div class = 'cssbox1'></div> -->
 		</div>
 	</body>
 	<style>
 	
 	.cssbox{
+		/* box-sizing: border-box; */
+		/*加上这个是IE盒模型 */
+		/*IE盒模型 = height +padding + border*/
+		/*标准盒模型 高度 = height  不包括padding 和 border*/
 		height:200px;
 		width:200px;
+		border:50px solid red;
 		background-color: #0000FF;
 		margin-right: 100px;
 	}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var a = {
+			name: "zhangsan"
+		}
+		a.sex = '0'
+
+		console.log(a)
+		var b = [1, 2, 3, 4]
+		//这是一个构造函数
+		function Foo(name, age) {
+			this.name = name;
+			this.age = age;
+		}
+		/*根据要点3，所有的函数都有一个prototype属性，这个属性是一个对象
+		再根据要点1，所有的对象可以自由扩展属性
+		于是就有了以下写法*/
+		Foo.prototype = {
+			// prototype对象里面又有其他的属性
+			showName: function() {
+				console.log("I'm " + this.name); //this是什么要看执行的时候谁调用了这个函数
+			},
+			showAge: function() {
+				console.log("And I'm " + this.age); //this是什么要看执行的时候谁调用了这个函数
+			}
+		}
+		var fn = new Foo('小明', 19)
+		console.log(fn)
+		
+		var ccc = function(){
+			console.log("ccc")
+		}
+		console.dir(ccc)
+		var ddd = new String("ccc")
+		console.log(ddd)
+		console.log([false] == "false")
+		console.log(Number(null))
+	</script>
+</html>

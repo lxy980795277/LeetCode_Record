@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+	const a = 5
+	a = 6
+	console.log(a)
+	//会报错 因为const定义的变量不允许更改
+	
+	const b ={
+		age:10
+	}
+	// b = {
+	// 	age:5 //会报错
+	// }
+	b.age = 5  //不会报错
+	console.log(b)
+	//{age:5}
+	</script>
+</html>
