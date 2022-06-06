@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button">登录</button>
+    <script>
+        let flag=false;
+        function onclick(){
+            if(flag) return ;
+            console.log("aaa");
+            flag=true;
+            setTimeout(()=>{
+                flag=false;
+            },3000)
+        }
+        // 封装一个函数实现节流函数
+        // function f(fn,delay)
+        // {
+        //     let flag=false;
+        //     return ()=>{
+        //         if(flag) return ;
+        //         fn();
+        //         flag=true;
+        //         setTimeout(()=>{
+        //             flag=false;
+        //         },delay)
+        //     }
+        // }
+        let but=document.getElementById("button");
+        but.addEventListener("click",onclick)
+
+        
+    </script>
+</body>
+</html>

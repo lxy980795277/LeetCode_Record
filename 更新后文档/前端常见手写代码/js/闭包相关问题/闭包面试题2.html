@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/*闭包的例子 2  */
+			/*local变量 和 bar函数就构成了一个闭包*/
+			function foo() {
+				var local = 1
+		
+				function bar() {
+					local++
+					return local
+				}
+				return bar
+			}
+			var func = foo()
+			console.log(func()) //2
+		
+		
+		
+		</script>
+	</body>
+</html>

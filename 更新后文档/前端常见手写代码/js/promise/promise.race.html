@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//resolve不会输出，需要调用then函数输出
+			//reject会直接输出
+			var p1 = new Promise(function(resolve, reject) {
+				var img = new Image();
+				// resolve("aaa")
+				img.onload = function() {
+					resolve(img);
+				}
+				img.src = 'xxxxxx';
+			});
+
+			//延时函数，用于给请求计时
+			var p2 = new Promise(function(resolve, reject) {
+				setTimeout(function() {
+					resolve('图片请求超时');
+				}, 2000);
+			});
+
+			promiserece([p1, p2]).then((result)=>{
+				console.log(result)
+			})
+			
+			function promiserece(promises) {
+				if (!Array.isArray(promises)) {
+					return new Promise(function(resolve, reject) {
+						reject("input must be array")
+					})
+				}
+				return new Promise(function(resolve,reject){
+					for(var i in promises){
+						 promises[i].then((result)=>{
+							return resolve(result)
+						})
+					}
+				})
+			}
+
+			function promiseRace(promises) {
+				if (!Array.isArray(promises)) {
+					throw new Error("promises must be an array")
+				}
+				return new Promise(function(resolve, reject) {
+					promises.forEach(p =>
+						Promise.resolve(p).then(data => {
+							resolve(data)
+						}, err => {
+							reject(err)
+						})
+					)
+				})
+			}
+		</script>
+	</body>
+</html>

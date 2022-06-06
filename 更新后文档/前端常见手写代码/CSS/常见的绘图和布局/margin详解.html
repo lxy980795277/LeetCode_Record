@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div class='father'>
+			<div class='child'></div>
+		</div>
+
+		<div class='one'></div>
+		<div class='two'></div>
+	</body>
+	<style>
+		/*
+	
+	margin的4个参数
+	padding也是同理
+	如果提供全部四个参数值，将按上、右、下、左的顺序作用于四边。 
+	
+	如果只提供一个，将用于全部的四边。 
+	
+	如果提供两个，第一个用于上、下，第二个用于左、右。 
+	
+	如果提供三个，第一个用于上，第二个用于左、右，第三个用于下。 
+	
+	*/
+		.father {
+			height: 200px;
+			width: 200px;
+			background-color: #0000FF;
+		}
+
+		.child {
+			height: 50px;
+			width: 50px;
+			background-color: #00FFFF;
+			margin: 10px 10px 10px 10px;
+		}
+
+		.one {
+			height: 200px;
+			width: 200px;
+			background-color: #99e4ff;
+		}
+
+		.two {
+			height: 200px;
+			width: 200px;
+			background-color: #ff6c17;
+			/* margin:10px; */
+			/* margin:10px 10px; */
+			/* margin:10px 30px 10px; */
+			margin:10px 20px 30px 40px;
+		}
+	</style>
+</html>

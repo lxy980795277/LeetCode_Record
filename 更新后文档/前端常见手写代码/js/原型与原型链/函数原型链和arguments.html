@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function foo() {
+			/*
+			众所周知，js是一门相当灵活的语言。
+			当我们在js中在调用一个函数的时候，
+			我们经常会给这个函数传递一些参数，
+			js把传入到这个函数的全部参数存储在一个叫做arguments的东西里面
+			*/
+			console.log(arguments)
+			if (arguments.length == 0) {
+				return null;
+			} else {
+				var max = 0;
+				for (var i = 0; i < arguments.length; i++) {
+					if (arguments[i] > max) {
+						max = arguments[i];
+					}
+				}
+				return max;
+			}
+		}
+		foo()
+	</script>
+</html>

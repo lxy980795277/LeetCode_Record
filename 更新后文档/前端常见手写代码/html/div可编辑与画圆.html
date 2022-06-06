@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id = 'circle' class = 'circle' >aaa</div>
+		<div contenteditable="true" >这段文字可被编辑</div>
+		<div contenteditable="false" >这段文字不刻意被编辑</div>
+		<div contenteditable="false" hidden='true'>不会显示</div>
+	</body>
+	<script>
+	
+
+	//Byid可以正常获取内容
+	//byclass不可以正常获取内容 需要获取第0个元素
+	
+	
+	console.log(document.getElementById("circle").innerHTML) //aaa
+	console.log(document.getElementsByClassName("circle").innerHTML)//undefined 要加[0]才显示
+	
+
+	</script>
+	
+	<style>
+	.circle{
+		height:200px;
+		width:200px;
+		border-radius: 50%;
+		background-color: #4EEE46;
+		cursor: pointer;
+	}
+	
+	</style>
+</html>
+

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+	//浅拷贝
+	let a=[0,1,2,3,4]
+	let b = a           //浅拷贝 
+	let c = a.slice(0) //深拷贝
+	console.log(a===b); //true
+	console.log(a===c); //true
+	a[0]=1;
+	console.log(a,b,c);
+	//输出如下 可以清楚的看到 
+	//浅拷贝时候，修改了原数组，则浅拷贝的数组也同样会跟着改变
+	//而slice方法是深拷贝，则不会受到原数组的影响
+	//(5) [1, 1, 2, 3, 4] (5) [1, 1, 2, 3, 4] (5) [0, 1, 2, 3, 4]
+	</script>
+</html>

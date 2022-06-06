@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//
+			/*
+			Promise.all(iterable) 方法返回一个 Promise 实例，
+			此实例在 iterable 参数内所有的 promise 都“完成（resolved）”
+			或参数中不包含 promise 时回调完成（resolve）；
+			如果参数中 promise 有一个失败（rejected），
+			此实例回调失败（reject），失败原因的是第一个失败 promise 的结果。
+			*/
+			var p1 = new Promise(function(resolve, reject) {
+				//做一些异步操作
+				setTimeout(function() {
+					console.log('异步任务1执行完成');
+					resolve('随便什么数据1');
+				}, 1000);
+			});
+
+			var p2 = new Promise(function(resolve, reject) {
+				//做一些异步操作
+				setTimeout(function() {
+					console.log('异步任务2执行完成');
+					// reject("出现了error")
+					resolve('随便什么数据2');
+				}, 2000);
+			});
+
+
+			var p3 = new Promise(function(resolve, reject) {
+				//做一些异步操作
+				setTimeout(function() {
+					console.log('异步任务3执行完成');
+					resolve('随便什么数据3');
+				}, 2000);
+			});
+			//官方实现promise.all的方法
+			// Promise.all([p1,p2,p3]).then(function(data){
+			// 	console.log(data)
+			// })
+			
+			
+			//手动实现promise.all的方法
+			var aa =  promiseAll([p1, p2, p3])
+			
+			 function promiseall(promises){
+				if(!Array.isArray(promises)){
+					return new Promise(function(resolve,reject){
+						return reject("input must be arrays")
+					})
+				}
+				var len = promises.length
+				var count = 0
+				var result = []
+				for(var i in promises){
+					 promises[i].then(function(data){
+						count ++ ;
+						result.push(data)
+						if(count == len){
+							return new Promise(function(resolve,reject){
+								// console.log("asdasd")
+								return resolve(result)
+							}).then((data)=>{
+								console.log(data)
+							})
+							.catch(function(e){
+								return reject(e)
+							})
+						}
+					})
+					promises[i].catch((error)=>{
+						return new Promise(function(reject){
+							return reject(error)
+						})
+					})
+				}				
+			}
+			
+			function promiseAll(promises){
+				if(!Array.isArray(promises)){
+					return new Promise(function(resolve,reject){
+						reject("输入必须为数组")
+					}).catch((data)=>{
+						console.log(data)
+					})
+				}
+				var len = promises.length
+				var result = []
+				var count =0
+				for(var i= 0;i<len;i++){
+					promises[i].then((data)=>{
+						result.push(data)
+						count ++
+						if(count == len){
+							return new Promise(function(resolve,reject){
+								resolve(result)
+							}).then((data)=>{
+								console.log(data)
+							})
+						}
+					})
+					
+					promises[i].catch((error)=>{
+						return new Promise(function(resolve,reject){
+							reject(error)
+						})
+					})
+				}
+			}
+
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//请说出这段代码的输出 
+			//答案：输出5次5，而不会输出12345
+			// for (var i = 0; i < 5; i++) {
+			// 	setTimeout(() => {
+			// 		console.log(i)
+			// 	}, 1000)
+			// }
+			/*
+			按照预期它应该依次输出1 2 3 4 5，而结果它输出了五次5，
+			这是为什么呢？原来由于js是单线程的，
+			所以在执行for循环的时候定时器setTimeout被安排到任务队列中排队等待执行，
+			而在等待过程中for循环就已经在执行，等到setTimeout可以执行的时候，
+			for循环已经结束，
+			i的值也已经编程5，所以打印出来五个5
+			*/
+
+		   /*通过使用立即函数+闭包的形式 可以达到这个效果 */
+			// for (var i = 0; i < 5; i++) {
+			// 	(function(i){
+			// 		setTimeout(() => {
+			// 			console.log(i)
+			// 		}, 1000)
+			// 	})(i)
+			// }
+			// 输出 0,1,2,3,4
+			
+
+			// 输出0，1，2，3，4 await的存在，会导致这个循环必须在定时器到达时间后才会执行
+			async function aa (){
+				for(var i =0;i<5;i++){
+					var a = new Promise(function(resolve,reject){
+						setTimeout(() => {
+							resolve(i)
+						}, 1000)
+					})
+					b = await a.then((data)=>{
+						console.log(data)
+					})
+				}
+			}
+			
+			aa()
+			
+
+		
+
+			
+		</script>
+	</body>
+</html>

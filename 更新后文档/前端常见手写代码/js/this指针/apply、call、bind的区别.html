@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		
+		var xiaoming = {
+			name:"小明",
+			age:28,
+			sayhello:function(){
+				console.log(this.name+"今年"+this.age.toString()+"岁")
+			}
+		}
+		
+		var xiaowang = {
+			name:"小王",
+			age:30,
+			sayhello:function(){
+				console.log(this.name+"今年"+this.age.toString()+"岁")
+			}
+		}
+		
+		xiaoming.sayhello.call(xiaoming) //小明今年28岁
+		xiaoming.sayhello.call(xiaowang) //小王今年30岁
+		xiaoming.sayhello.bind(xiaowang)()//小王今年 30岁
+		//因为bind返回的是函数 
+		//上面这一行xiaoming.sayhello.bind(xiaowang)()
+		//等价于 var b = xiaoming.sayhello.bind(xiaowang)  b()
+	
+		
+		
+		</script>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		
+
+		var name = "window";
+		
+		let b = {
+			name:"b",
+			fun:()=>{   
+				console.log(this.name)
+			},
+			fun2:function(){
+				console.log(this.name)
+			}
+		}
+		b.fun()  //输出为window
+		b.fun2() //输出为b 
+		
+	
+		console.log(b.__proto__===Object.prototype) //true
+		//注意这里的__proto__是两个下划线 每一遍都是两个下划线
+		
+		
+	</script>
+</html>

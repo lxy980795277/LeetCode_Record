@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+		//1 构造函数模式 
+		function obj(){
+		  this.name = "obj";
+		}
+		var o = new obj();
+		console.log(o); //"obj"
+		
+		//2 方法调用模式 通过var的方式构造一个对象，this指向这个对象
+		var student = {
+			 name :"abc",
+			 edg : 25,
+			getname:function(){
+				return this.name
+			},
+			getage:function(){
+				return this.edg
+			}
+		}
+		
+		console.log(student.getname())
+		console.log(student.getage())
+		
+		
+		//3 函数调用模式  this指向全局变量，因为this指向的是window全局对象
+		var test =111
+		var b = function(){
+			console.log(this.test) //111
+		}
+		b()
+		
+		//4 apply模式 
+		//在JS中，函数也是对象，所有函数对象都有两个方法：apply和call，
+		//这两个方法可以让我们构建一个参数数组传递给调用函数，也允许我们改变this的值
+		/*  
+		直接调用函数对象getName的apply方法，由于没有参数，
+		所以被划归到了全局作用域中，this指向了window对象；
+		将getName函数在obj对象上调用，函数体内的this也就指向了obj对象；
+		*/
+		var name = "window";
+		var obj = {
+		  name : "obj"
+		};
+		function getName(){
+		  console.log(this.name);
+		}
+		getName.apply(); //"window"
+		getName.apply(obj); //"obj"
+		
+
+
+    </script>
+</body>
+</html>

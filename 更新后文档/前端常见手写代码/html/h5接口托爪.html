@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
+
+		<title></title>
+	</head>
+	<body>
+		<div id = "drag" class = 'drag' draggable="true"></div>
+	</body>
+	
+	
+	<script>
+	var drag = document.getElementById("drag")
+	console.log()
+	
+	drag.addEventListener("dragenter",function(e){
+		
+		console.log(e.clientX,e.clientY)
+		
+	})
+	drag.addEventListener("drag",function(e){
+		console.log(e.clientX,e.clientY)
+		
+		
+	})
+	drag.addEventListener("dragend",function(e){
+		drag.style.marginLeft = e.clientX +"px"
+		drag.style.marginTop = e.clientY+"px"
+	})
+	
+	
+	
+	</script>
+	<style>
+	#drag{
+		height:200px;
+		width:200px;
+		background-color: #0000FF;
+	
+		
+	}
+	</style>
+</html>

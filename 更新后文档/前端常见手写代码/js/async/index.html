@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // async function promiseerror1(){
+        //     return Promise.reject("zhengque");
+        // }
+        // async function promiseerror2(){
+        //     Promise.reject("cuowu");
+        // }
+
+        // promiseerror1().then(success=>console.log("成功",success))
+        // .catch(error=>console.log("失败",error));
+        // console.log("-------------------");
+        // promiseerror2().then(success=>console.log("成功",success))
+        // .catch(error=>console.log("失败",error));
+
+        // async function promiseerror1(){
+            // return Promise.reject("zhengque");
+        // }
+        // promiseerror1().then(success=>console.log("成功",success))
+        // .catch(error=>console.log("失败",error));
+        // console.log(promiseerror1());
+
+
+        function getData(){
+            return "hello";
+        }
+        async function gettow(){
+            return Promise.resolve("hi,world");
+        }
+        console.log(gettow());
+        console.log("------------------");
+        async function f(){
+            const v1=await getData();
+            const v2=await gettow();
+            console.log(v1,v2);
+        }
+        f();
+    </script>
+</body>
+</html>

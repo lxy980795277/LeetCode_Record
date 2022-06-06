@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a{
+            height: 100px;
+            width: 100px;
+            background-color: red;
+        }
+        .b{
+            height: 100px;
+            width: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <!-- 在js执行之前，会先渲染一部分元素到页面上，因此，如果js放在前面，那么连唯一一点可能渲染的元素都加载不出来了 -->
+    <div class="a"></div>
+    <div class="b"></div>
+    <script>
+        let k=300000;
+        while(k--)
+        {
+            console.log("hhhhhhh");
+        }
+    </script>
+    
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div class='father'>
+			<div class='child'></div>
+			<!-- <div class="test"></div> -->
+		</div>
+	</body>
+	<style>
+		
+
+		.father {
+			background-color: #0000FF;
+			border: 1px solid red;
+			/* 清除浮动方法1:设置父元素高度 */
+			/* height:200px; */
+			/* 清除浮动方法2:设置overflow */
+			/* overflow: hidden; */
+		}
+
+		.child {
+			float: left;
+			width: 100px;
+			height: 100px;
+			background-color: #008000;
+		}
+		/* 清除浮动方法3:追加div，设置clear:both */
+		/* .test{
+			clear: both;
+		} */
+		/* 清除浮动方法4:父元素追加after伪元素 */
+		.father::after {
+			display: block;
+			content:"";
+			clear: both;
+		}
+	</style>
+</html>

@@ -1,0 +1,43 @@
+1.redux是什么
+2.除了redux，还有什么传递状态的方法
+3.防抖和节流
+4.手写节流函数
+5.封装节流函数，使得所有方法都可以使用. //闭包
+6.频繁操作dom隐藏元素的实现场景
+7.父元素relative，子元素absolute，top:10px,margin:10px,padding:10px,子元素距离父元素高度和左边距多少
+//存疑，我觉得我的答案20px和10px没有错
+8.let p=new Promise((resolve,reject)=>{
+    console.log(1);
+    resolve();
+    Promise.resolve().then(()=>{
+        console.log(2);
+    })
+}).then(()=>{
+    console.log(3);
+}).then(()=>{
+    console.log(4);
+}).then(()=>{
+    console.log(5);
+})
+输出结果
+9.手写数组扁平化
+10.算法：随机打乱一个数组   //最优解法：假如数组arr长度len=10，那么先从0～len中随机选取一个数字，和数组最后一个元素arr[len-1]交换，然后再从0～len-1中随机选取一个数字，和arr[len-2]交换，直到所有数字全部选取完毕
+11.扩展：怎么添加水印 canvas
+12.数组中的方法
+13.说说reduce、every、some
+14。说说foreach、map.  //foreach改不了原数组！！！！！
+15.说说slice、splice，
+16.http请求方法有哪些
+17.http状态码
+18.304协商缓存命中
+19.get、post区别
+20.http的patch方法
+21.context原理是什么
+22.定义一个方法，实现数组的链式调用  //原型对象上添加方法
+23.图片懒加载的原理
+24.splice的返回值  //删除的数组
+25.箭头函数this指向
+26.position取值有哪些
+27.说一说sticky粘性布局
+结果：通过
+评价：css还有待加强，js部分还不错

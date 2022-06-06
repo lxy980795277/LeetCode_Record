@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			
+			var a = [1,2,3,4]
+			console.log(typeof(a))  //object
+			function f(){
+
+			} 
+			console.log(typeof(f)); //function
+			
+			var a = [5,1,4,5]
+			var b = {
+				
+			}
+			var c = a instanceof Array 
+			var d = b instanceof Object
+			console.log(c)    //true
+			console.log(d)	//true
+			
+			var a = 5
+			var b = [5,7,8,9,10]
+			var c = a.constructor == Number
+			var d = b.constructor == Array
+			console.log(c)    //true
+			console.log(d)   //true
+			console.log(b.__proto__ == Array.prototype) //true
+		</script>
+	</body>
+</html>

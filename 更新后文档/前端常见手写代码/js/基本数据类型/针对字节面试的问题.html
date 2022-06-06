@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		
+		
+		var a 
+		console.log(a) //输出为undefine 表示变量声明了但是没有初始化，不存在定义
+		var b = null
+		console.log(b) //输出为null ，表示变量被定义了，但是定义为空值
+		
+		console.log(typeof(null))  //输出为object
+		//因为在最初的时候，null是表示一个为”无“的对象，转为数值时候为0
+		//undefine转为数值的时候为NAN 
+		/*清空数组的方法*/
+		var arr = [1,2,3];
+		arr.length = 0;
+		console.log(arr);//[]  //通过将数组长度设为0 清空数组
+		
+		var arr = [1,2,3];
+		arr.splice(0,arr.length);  
+		console.log(arr);//[]  //通过使用splice方法，从0下标开始删除长度为length的数
+		
+		var arr = [1 ,2 ,3];
+		arr = []; 
+		console.log(arr);  //将数组指向一个新数组，实际上并没有清楚原数组的内容
+		
+		
+		//判断优先级，如果等号两边出现了布尔值，则先把布尔值变为数字类型
+		//如果等号两边没有布尔值，一遍是对象类型，另一边是字符类型，则要把对象类型变为字符类型
+		//如果一边是数字类型，一边是字符类型，则要把字符类型变为数字类型
+		//如果等号两边没有布尔值且没有字符类型，则把两边都变为数字类型
+		
+		//2-16总结
+		//总判断逻辑：
+		//如果两边都是引用类型，则比较的是其在栈内存中存储的指向堆内存的地址
+		//如果两边都是基本类型，则全部变为数字类型 (若都为字符串，则按位比较)
+		//如果一边为引用类型，一边为基本类型，则先将引用变为基本，再将基本变为数字类型 
+		//复杂数据类型在隐式转换时会先转成String，然后再转成Number运算
+		//空字符串转换为0 非空字符串转变为1 
+		
+		console.log("111")
+		console.log(NaN == NaN)  //false
+		
+		//特殊的值 他和自身不相等 因为 一个不是数字 显然不能够说 等于 另一个不是数字
+		console.log("222")
+		console.log(false == "false") //false
+		//类型 ：基本 基本 全部变为number
+		//首先会将右边的字符串变为number，但是由于"false"是非数字，因此结果为NAN
+		//再将左边的false布尔值转变为0 所以左右两边并不相等 
+		
+		console.log([false] == "false") //true
+		//类型 ：引用 基本 先将引用变基本 
+		//把左边的[false]先变为"false"，即"false" == "false"
+		
+		console.log("333")
+		console.log("1" == 1)		 //true
+		//类型 ：基本 基本 
+		//一边出现字符串另一边是数字，把字符号串变为数字
+		
+		console.log("444")
+		console.log([1,2,3] == [1,2,3]) //false
+		//类型：引用 引用 
+		//两个数组的地址不一样 所以是false
+		
+		console.log("555")
+		console.log(null == undefined)   //true
+		//特殊类型：null 和 undefined
+		//undefined 是从 null 派生出来的 所以是true
+		
+		console.log("666")
+		console.log(false == [])   //true
+		//类型 基本 引用 
+		//先把引用变基本
+		//空数组变为布尔值为false，即为false == false 再变为 0==0
+		
+		console.log("777")
+		console.log(false == "")  //true
+		//类型：基本 基本 
+		//把空字符串变为 false 即 false == false 再变为 0 == 0
+		
+		console.log("888")
+		console.log(false == ![])  //true
+		console.log([] == ![]) //同理 这个也为true
+		//类型 基本 引用 
+		//需要先把右侧变为boolean类型，!运算符的结果，除了null，undefined，NAN和空字符串结果为true，其他均为false 
+		
+		console.log("999")
+		console.log("" == null)  //false
+		//null在==的时候不进行类型转换 所以为false
+		//
+		
+		console.log("10")
+		console.log(false==![]) //true
+		
+		
+		//null在==的时候不进行类型转换 所以为false
+		console.log("111")
+		console.log(typeof(null)) // object
+		console.log(typeof(undefined))
+		//null 是从undefined派生出来的
+		/*在JS中进行数据底层存储的时候是用二进制存储的，这是一定的，而且它的前三位是代表存储的数据类型，
+		而000是代表object类型也就是引用类型的数据。而null正好全是0，
+		所以它巧妙的符合object类型的存储格式，所以在typeof检测的时候，它才会输出object。*/
+	
+		
+
+		
+		
+		
+		</script>
+	</body>
+</html>

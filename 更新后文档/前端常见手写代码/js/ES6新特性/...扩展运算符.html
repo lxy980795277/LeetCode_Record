@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+	<script>
+	// ...扩展运算符只能深拷贝一层
+	//在用作单层数组的复制时候 ：
+	//即数组的每个元素都是基本数据类型的时候，这时候是深拷贝
+	//但是如果数组的每个元素不是基本数据类型，而是引用数据类型，
+	//这就是浅拷贝了 
+	var a = [1,2,3,4,5]
+	var b = [...a]
+	console.log(a,b)
+	a[0] = 100     //修改a的值不会影响b的结果 这里是深拷贝
+	console.log(a,b)
+	
+	var a = [{age:20},{age:25}]
+	var b = [...a]
+	console.log(b)
+	a[0].age = 5
+	console.log(b)   //这里修改a的结果，会影响b的结果，因为
+	//数组元素不是基本数据类型了，而是引用数据类型 
+	
+	
+	
+	
+	</script>
+</html>
